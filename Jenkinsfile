@@ -2,7 +2,7 @@ pipeline {
     agent any
     stages {
         stage('setgitconfig') {
-          step{
+          steps {
              sh 'git config --global user.email "test@test.com"'
              sh 'git config --global user.name "ci-bot"'
              sh 'git config --global credential.helper cache'
@@ -10,13 +10,13 @@ pipeline {
             }
         }
         stage('setgitcreds') {
-          step{
+          steps {
              git credentialsId: 'PAT_TOKEN', url: 'https://github.com/Ssases/upload.git'
              git credentialsId: 'PAT_TOKEN', url: 'https://github.com/Ssases/upload-copy.git'
             }
         }
         stage('Syncronize TFS-SECOND'){
-          step{
+          steps {
           sh 'git clone https://ssases:$PAT_TOKEN@github.com/Ssases/upload.git'
         dir("upload") {
             //add a remote repository
