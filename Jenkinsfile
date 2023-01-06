@@ -1,18 +1,23 @@
-node {
-  
+pipeline {
+    agent any
     stages {
         stage('setgitconfig') {
+          step{
              sh 'git config --global user.email "test@test.com"'
              sh 'git config --global user.name "ci-bot"'
              sh 'git config --global credential.helper cache'
              sh "git config --global credential.helper 'cache --timeout=3600'"
             }
+        }
         stage('setgitcreds') {
+          step{
              git credentialsId: 'PAT_TOKEN', url: 'https://github.com/Ssases/upload.git'
              git credentialsId: 'PAT_TOKEN', url: 'https://github.com/Ssases/upload-copy.git'
             }
+        }
         stage('Syncronize TFS-SECOND'){
-        sh 'git clone https://ssases:$PAT_TOKEN@github.com/Ssases/upload.git'
+          step{
+          sh 'git clone https://ssases:$PAT_TOKEN@github.com/Ssases/upload.git'
         dir("upload") {
             //add a remote repository
             sh 'git remote add --mirror=fetch upload-copy https://ssases:$PAT_TOKEN@github.com/Ssases/upload-copy.git'
@@ -26,6 +31,7 @@ node {
             sh 'git push upload-copy --all'
             sh 'git push upload-copy --tags'
             }
+          }
         }   
     }
 }
