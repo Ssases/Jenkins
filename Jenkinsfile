@@ -11,10 +11,10 @@ pipeline {
         stage('Syncronize TFS-SECOND'){
           steps {
           sh 'rm -rf upload'
-          sh 'git clone https://Ssases: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@github.com/Ssases/upload.git'
+          sh 'git clone https://Ssases:7489c6b6-71b6-4a1d-98d5-4a3c27a6e8a6@github.com/Ssases/upload.git'
         dir("upload") {
             //add a remote repository
-            sh 'git remote add --mirror=fetch upload-copy https://ssases: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@github.com/Ssases/upload-copy.git'
+            sh 'git remote add --mirror=fetch upload-copy https://ssases:7489c6b6-71b6-4a1d-98d5-4a3c27a6e8a6@github.com/Ssases/upload-copy.git'
             // update the local copy from the first repository
             sh 'git fetch origin --tags'
 
