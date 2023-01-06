@@ -1,6 +1,5 @@
-pipeline {
-    agent any
-
+node {
+  
     stages {
         stage('setgitconfig') {
              sh 'git config --global user.email "test@test.com"'
