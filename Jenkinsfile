@@ -5,13 +5,12 @@ pipeline {
           steps {
              sh 'git config --global user.email "test@test.com"'
              sh 'git config --global user.name "ci-bot"'
-             sh 'git config --global credential.helper cache'
-             sh "git config --global credential.helper 'cache --timeout=3600'"
             }
         }
         
         stage('Syncronize TFS-SECOND'){
           steps {
+          sh 'rm -rf upload
           sh 'git clone https://Ssases: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@github.com/Ssases/upload.git'
         dir("upload") {
             //add a remote repository
