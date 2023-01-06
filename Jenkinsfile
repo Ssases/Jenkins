@@ -9,12 +9,7 @@ pipeline {
              sh "git config --global credential.helper 'cache --timeout=3600'"
             }
         }
-        stage('setgitcreds') {
-          steps {
-             git credentialsId: '7489c6b6-71b6-4a1d-98d5-4a3c27a6e8a6', url: 'https://github.com/Ssases/upload.git'
-             git credentialsId: '7489c6b6-71b6-4a1d-98d5-4a3c27a6e8a6', url: 'https://github.com/Ssases/upload-copy.git'
-            }
-        }
+        
         stage('Syncronize TFS-SECOND'){
           steps {
           sh 'git clone --bare upload https://github.com/Ssases/upload.git'
