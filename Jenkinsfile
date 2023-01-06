@@ -17,10 +17,10 @@ pipeline {
         }
         stage('Syncronize TFS-SECOND'){
           steps {
-          sh 'git clone https://ssases:$PAT_TOKEN@github.com/Ssases/upload.git'
+          sh 'git clone --bare upload https://github.com/Ssases/upload.git'
         dir("upload") {
             //add a remote repository
-            sh 'git remote add --mirror=fetch upload-copy https://ssases:$PAT_TOKEN@github.com/Ssases/upload-copy.git'
+            sh 'git remote add --mirror=fetch upload-copy https://github.com/Ssases/upload-copy.git'
             // update the local copy from the first repository
             sh 'git fetch origin --tags'
 
