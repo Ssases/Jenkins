@@ -11,8 +11,8 @@ pipeline {
         }
         stage('setgitcreds') {
           steps {
-             git credentialsId: 'PAT_TOKEN', url: 'https://github.com/Ssases/upload.git'
-             git credentialsId: 'PAT_TOKEN', url: 'https://github.com/Ssases/upload-copy.git'
+             git credentialsId: '7489c6b6-71b6-4a1d-98d5-4a3c27a6e8a6', url: 'https://github.com/Ssases/upload.git'
+             git credentialsId: '7489c6b6-71b6-4a1d-98d5-4a3c27a6e8a6', url: 'https://github.com/Ssases/upload-copy.git'
             }
         }
         stage('Syncronize TFS-SECOND'){
