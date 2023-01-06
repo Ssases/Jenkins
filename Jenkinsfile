@@ -10,7 +10,7 @@ pipeline {
         
         stage('Syncronize TFS-SECOND'){
           steps {
-          sh 'rm -rf upload
+          sh 'rm -rf upload'
           sh 'git clone https://Ssases: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@github.com/Ssases/upload.git'
         dir("upload") {
             //add a remote repository
